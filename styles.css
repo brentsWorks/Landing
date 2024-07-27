@@ -165,7 +165,7 @@ span{
 
 .social-icons a:hover{
 	color:black;
-	transform: scale(1.3) translateY(-5p);
+	transform: scale(1.3) translateY(-5px);
 	background-color: #b74b4b;
 	box-shadow: 0 0 25px #b74b4b;
 }
@@ -232,7 +232,7 @@ span{
 		content: "Student";
 	}
 	51%, 75%{
-		content: "Cybersec Enthusiast";
+		content: "AI Enthusiast";
 	}
 	76%, 100%{
 		content: "Competitive Athlete";
