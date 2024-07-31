@@ -364,13 +364,11 @@ span{
     align-items: center;
     text-align: left;
     box-sizing: border-box;
-	transform: translateX(-20px);
 }
 
 .experience-box:hover .experience-details {
     opacity: 1; /* Show details on hover */
     visibility: visible;
-	transform: translateX(0);
     border-radius: 8px; /* Consistent with box rounding */
 }
 
