@@ -7,6 +7,7 @@
 	text-decoration: none;
 	border: none;
 	outline: none;
+	scroll-behavior: smooth;
 	font-family: 'Poppins', sans-serif;
 }
 
@@ -23,14 +24,13 @@ body{
 }
 
 header{
-	margin-top: 20px;
+	margin-top: 0px;
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
 	padding: 1rem 9%;
-	background-color: transparent;
-	filter: drop-shadow(10px);
+	backdrop-filter: blur(10px);
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -139,7 +139,7 @@ span{
 	width:32vw;
 	border-radius: 50%;
 	box-shadow: 0 0 25px solid #b74b4b;
-	cursor: pointer;
+	pointer-events: none;
 	transition: 0.2s linear;
 }
 
@@ -160,11 +160,11 @@ span{
 	border-radius: 50%;
 	margin: 3rem 1.5rem 3rem 0;
 	transition: 0.3s ease;
-	color: white;
+	color: #b74b4b;
 }
 
 .social-icons a:hover{
-	color:black;
+	color:white;
 	transform: scale(1.3) translateY(-5px);
 	background-color: #b74b4b;
 	box-shadow: 0 0 25px #b74b4b;
@@ -218,6 +218,192 @@ span{
 	animation: cursor 0.6s infinite;
 }
 
+.projects {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding-top: 15%;
+    overflow-x: auto; /* Allows horizontal scrolling */
+    white-space: nowrap; /* Ensures items stay in a single line */
+}
+
+.projects h2 {
+	font-size: 4rem;
+	margin-bottom: 4rem;
+}
+
+.projects-container {
+	background-color: black;
+    display: flex;
+    gap: 20px; /* Adjust as needed for spacing between project boxes */
+    padding: 20px 0px; /* Adjust padding as needed */
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+.projects-box {
+    flex: 0 0 auto; /* Prevents shrinking and allows grow */
+    width: 325px; /* Width of each project box */
+	height: 250px;
+    border: 1px solid white;
+    border-radius: 8px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+	flex-shrink: 0;
+}
+
+.projects-box:hover {
+    transform: scale(0.95); /* Slightly shrink the box */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+}
+
+.projects-image {
+    width: 100%;
+    height: 200px; /* Adjust height as needed */
+    object-fit: cover;
+}
+
+.project-info {
+    padding: 15px;
+}
+
+.project-title {
+    margin: 0;
+    font-size: 1.25em;
+	color: black;
+}
+
+.project-date {
+	font-style: italic;
+    margin: 5px 0;
+    color: black;
+}
+
+.project-description {
+    margin: 0;
+    color: black;
+}
+
+
+.experience {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10% 0;
+}
+
+.experience h2 {
+    font-size: 4rem;
+    margin-bottom: 4rem;
+}
+
+.experience-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px; /* Space between experience boxes */
+	padding: 0 20px;
+	position: relative;
+}
+
+.experience-box {
+	background-color: white;
+    position: relative;
+    width: 120px; /* Initial width of the circular box */
+    height: 120px; /* Initial height of the circular box */
+    border-radius: 50%;
+    overflow: hidden;
+    transition: width 1s ease, border-radius 1s ease;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+    cursor: pointer;
+}
+
+.experience-box:hover {
+    width: 500px; /* Expanded width */
+    border-radius: 8px; /* Rounded corners */
+}
+
+.experience-image {
+    position: absolute;
+    left: 0; /* Align to the left edge */
+    width: 120px; /* Same as initial width of box */
+    height: 120px; /* Same as initial height of box */
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: white; /* Background color for image visibility */
+    transition: all 0.5s ease;
+}
+
+.experience-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.experience-box:hover .experience-image {
+    border-radius: 8px; /* Rounded corners for the smaller image */
+    position: absolute;
+    /* Adjust to position image beside the expanded box */
+}
+
+.experience-details {
+    position: relative;
+    padding: 10px;
+    color: black;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    box-sizing: border-box;
+	transform: translateX(-20px);
+}
+
+.experience-box:hover .experience-details {
+    opacity: 1; /* Show details on hover */
+    visibility: visible;
+	transform: translateX(0);
+    border-radius: 8px; /* Consistent with box rounding */
+}
+
+.experience-details h3, .experience-details p {
+    margin: 5px;
+}
+
+.experience-details .employer {
+	font-size: 1.5em;
+}
+.experience-details .role {
+    font-weight: bold;
+	font-size: 1.5em;
+}
+
+.experience-details .dates {
+	font-style: italic;
+	font-size: 1.4em;
+}
+
+.experience-details .location {
+    font-size: 1.25em;
+}
+
+.chain {
+	width: 3px;
+	height: 40px;
+	background-color: grey;
+}
+
+.experience-box + .chain {
+	margin: 5px;
+}
 @keyframes cursor{
 	to{
 		border-left: 3px solid #b74b4b;
@@ -232,7 +418,7 @@ span{
 		content: "Student";
 	}
 	51%, 75%{
-		content: "AI Enthusiast";
+		content: "Cybersecurity Advocate";
 	}
 	76%, 100%{
 		content: "Competitive Athlete";
