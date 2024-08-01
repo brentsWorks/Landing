@@ -244,7 +244,7 @@ span{
 .projects-box {
     flex: 0 0 auto; /* Prevents shrinking and allows grow */
     width: 325px; /* Width of each project box */
-	height: 250px;
+	height: 275px;
     border: 1px solid white;
     border-radius: 8px;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
