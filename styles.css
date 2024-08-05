@@ -31,6 +31,7 @@ header{
 	width: 100%;
 	padding: 1rem 9%;
 	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px); /* For Safari */
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -465,6 +466,7 @@ span{
 
 	header {
 		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px); /* For Safari */
 	}
     .projects {
         padding-top: 10%; /* Adjust padding as necessary */
@@ -487,4 +489,12 @@ span{
         height: 200px; /* Adjust height as necessary */
     }
 
+    .experience-box.open {
+        width: 90%;
+        max-width: 90vw; /* Adjust max-width for mobile screens */
+    }
+
+    .experience-details {
+        font-size: 0.9rem; /* Adjust font size for readability on smaller screens */
+    }
 }
