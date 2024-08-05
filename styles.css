@@ -462,6 +462,10 @@ span{
 
 /* Ensure a vertical column layout on mobile devices */
 @media(max-width: 768px) { /* Adjust the max-width as needed for your breakpoints */
+
+	header {
+		backdrop-filter: blur(10px);
+	}
     .projects {
         padding-top: 10%; /* Adjust padding as necessary */
         text-align: center;
@@ -482,4 +486,5 @@ span{
     .projects-image {
         height: 200px; /* Adjust height as necessary */
     }
+
 }
