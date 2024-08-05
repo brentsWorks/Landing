@@ -489,12 +489,51 @@ span{
         height: 200px; /* Adjust height as necessary */
     }
 
-    .experience-box.open {
-        width: 90%;
-        max-width: 90vw; /* Adjust max-width for mobile screens */
+	.experience-box {
+        width: 80px;
+        height: 80px;
     }
 
-    .experience-details {
-        font-size: 0.9rem; /* Adjust font size for readability on smaller screens */
+    .experience-box.open {
+        width: 90%; /* Expanded width on mobile */
+        max-width: 90vw; /* Prevent it from being too large on mobile */
+        border-radius: 8px; /* Rounded corners */
     }
+
+	.experience-image {
+		position: absolute;
+		left: 0; /* Align to the left edge */
+		width: 80px; /* Same as initial width of box */
+		height: 80px; /* Same as initial height of box */
+		border-radius: 50%;
+		overflow: hidden;
+		background-color: white; /* Background color for image visibility */
+		transition: all 0.25s ease;
+	}
+	
+	.experience-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.experience-details h3, .experience-details p {
+		margin: 1px;
+	}
+
+	.experience-details .employer {
+		font-size: 0.8em;
+	}
+	.experience-details .role {
+		font-size: 0.8em;
+	}
+
+	.experience-details .dates {
+		font-style: italic;
+		font-size: 0.7em;
+	}
+
+	.experience-details .location {
+		font-size: 0.5em;
+	}
 }

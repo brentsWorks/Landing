@@ -3,14 +3,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     experienceBoxes.forEach(box => {
         box.addEventListener('click', () => {
+            // Check if the box is already open
+            const isOpen = box.classList.contains('open');
+
             // Close all boxes
             experienceBoxes.forEach(b => {
-                if (b !== box) {
-                    b.classList.remove('open');
-                }
+                b.classList.remove('open');
             });
-            // Toggle the clicked box
-            box.classList.toggle('open');
+
+            // If the box was not open, open it
+            if (!isOpen) {
+                box.classList.add('open');
+            }
         });
     });
 });
