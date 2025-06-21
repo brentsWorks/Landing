@@ -425,13 +425,13 @@ span{
 		content: "Software Engineer";
 	}
 	26%, 50%{
-		content: "Student";
-	}
-	51%, 75%{
 		content: "Cybersecurity Advocate";
 	}
-	76%, 100%{
+	51%, 75%{
 		content: "Competitive Athlete";
+	}
+	76%, 100%{
+		content: "Computer Science Graduate";
 	}
 }
 
@@ -486,7 +486,9 @@ span{
     }
 
     .projects-image {
-        height: 200px; /* Adjust height as necessary */
+        height: 160px; /* Reduced height to zoom out further */
+        object-fit: contain; /* Show the whole image, zoomed out */
+        width: 100%; /* Ensure image doesn't overflow its box */
     }
 
 	.experience-box {
