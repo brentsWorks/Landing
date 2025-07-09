@@ -7,49 +7,57 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import DownloadIcon from '@mui/icons-material/Download';
 import Tooltip from '@mui/material/Tooltip';
 import { Typewriter } from 'react-simple-typewriter';
+import { useTheme } from '@mui/material/styles';
+import { usePortfolioMode } from '../PortfolioModeContext';
+import YouTubeIcon from '@mui/icons-material/YouTube';
 
 export default function MeSection() {
+  const { mode } = usePortfolioMode();
+  const theme = useTheme();
   return (
     <Box
       sx={{
-        minHeight: '60vh',
+        minHeight: { xs: 'auto', md: '60vh' },
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: { xs: 'column', md: 'row' },
-        py: 8,
-        background: 'black',
-        color: 'white',
+        py: { xs: 4, md: 8 },
+        px: { xs: 1, sm: 2, md: 4 },
+        background: 'none',
+        color: theme.palette.text.primary,
       }}
     >
       <Paper
         elevation={6}
         sx={{
-          background: 'rgba(30, 41, 59, 0.7)',
+          background: theme.palette.mode === 'dark' ? 'rgba(30,41,59,0.7)' : 'rgba(255,255,255,0.7)',
           backdropFilter: 'blur(8px)',
           borderRadius: 5,
-          p: { xs: 3, md: 6 },
+          p: { xs: 2, sm: 3, md: 6 },
           display: 'flex',
           flexDirection: { xs: 'column', md: 'row' },
           alignItems: 'center',
-          gap: { xs: 3, md: 6 },
+          gap: { xs: 2, sm: 3, md: 6 },
           boxShadow: '0 4px 32px 0 rgba(0,0,0,0.18)',
-          border: '1px solid #334155',
+          border: `1px solid ${theme.palette.divider}`,
+          width: '100%',
+          maxWidth: 1100,
         }}
       >
         <Avatar
           src="/images/profilepic.jpeg"
           alt="Profile Picture"
-          sx={{ width: 200, height: 200, boxShadow: 4, border: '3px solid #90caf9' }}
+          sx={{ width: { xs: 120, sm: 160, md: 200 }, height: { xs: 120, sm: 160, md: 200 }, boxShadow: 4, border: `3px solid ${theme.palette.primary.main}` }}
         />
-        <Box>
-          <Typography variant="h3" component="h1" gutterBottom sx={{ fontWeight: 700, color: '#f5f5f5', textShadow: '0 2px 8px rgba(0,0,0,0.4)' }}>
-            Hi, I'm <span style={{ color: '#90caf9', textShadow: '0 2px 8px rgba(0,0,0,0.4)' }}>Brent</span>
+        <Box sx={{ width: '100%', minWidth: 0 }}>
+          <Typography variant="h3" component="h1" gutterBottom sx={{ fontWeight: 700, color: theme.palette.text.primary, textShadow: '0 2px 8px rgba(0,0,0,0.4)', fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' }, textAlign: { xs: 'center', md: 'left' } }}>
+            Hi, I'm <span style={{ color: theme.palette.primary.main, textShadow: '0 2px 8px rgba(0,0,0,0.4)' }}>Brent</span>
           </Typography>
-          <Typography variant="h5" sx={{ mb: 2, fontWeight: 500, color: '#e3f2fd', textShadow: '0 2px 8px rgba(0,0,0,0.4)' }}>
-            I'm a <span style={{ color: '#90caf9', textShadow: '0 2px 8px rgba(0,0,0,0.4)' }}>
+          <Typography variant="h5" sx={{ mb: 2, fontWeight: 500, color: theme.palette.text.secondary, textShadow: '0 2px 8px rgba(0,0,0,0.4)', fontSize: { xs: '1.1rem', sm: '1.3rem', md: '1.5rem' }, textAlign: { xs: 'center', md: 'left' } }}>
+            I'm a <span style={{ color: theme.palette.primary.main, textShadow: '0 2px 8px rgba(0,0,0,0.4)' }}>
               <Typewriter
-                words={['Software Engineer', 'Competitive Athlete']}
+                words={mode === 'technical' ? ['Software Engineer'] : ['Competitive Athlete']}
                 loop={0}
                 cursor
                 cursorStyle="|"
@@ -59,69 +67,93 @@ export default function MeSection() {
               />
             </span>
           </Typography>
-          <Typography variant="body1" sx={{ mb: 3, maxWidth: 500, color: '#e0e0e0' }}>
+          <Typography variant="body1" sx={{ mb: 3, maxWidth: 500, color: theme.palette.text.secondary, mx: { xs: 'auto', md: 0 }, textAlign: { xs: 'center', md: 'left' } }}>
             Living a well-balanced life while fulfilling my unwavering passion for the future of technology.
           </Typography>
-          <Stack direction="row" spacing={2} sx={{ mb: 3 }}>
-            <IconButton
-              component="a"
-              href="https://www.linkedin.com/in/brent-brison/"
-              target="_blank"
-              rel="noopener"
-              aria-label="LinkedIn"
-              sx={{ color: '#90caf9', background: 'rgba(255,255,255,0.06)', '&:hover': { background: '#90caf9', color: '#1e293b' } }}
-            >
-              <LinkedInIcon fontSize="large" />
-            </IconButton>
-            <IconButton
-              component="a"
-              href="https://github.com/brentsWorks/"
-              target="_blank"
-              rel="noopener"
-              aria-label="GitHub"
-              sx={{ color: '#90caf9', background: 'rgba(255,255,255,0.06)', '&:hover': { background: '#90caf9', color: '#1e293b' } }}
-            >
-              <GitHubIcon fontSize="large" />
-            </IconButton>
-            <IconButton
-              component="a"
-              href="https://www.instagram.com/brentbrison/"
-              target="_blank"
-              rel="noopener"
-              aria-label="Instagram"
-              sx={{ color: '#90caf9', background: 'rgba(255,255,255,0.06)', '&:hover': { background: '#90caf9', color: '#1e293b' } }}
-            >
-              <InstagramIcon fontSize="large" />
-            </IconButton>
-          </Stack>
-          <Stack direction="row" spacing={2} sx={{ mb: 2, justifyContent: { xs: 'center', md: 'flex-start' } }}>
-            <Tooltip title="Download CV" placement="top">
+          <Stack direction="row" spacing={2} sx={{ mb: 3, justifyContent: { xs: 'center', md: 'flex-start' }, flexWrap: 'wrap' }}>
+            {mode === 'technical' && (
+              <>
+                <IconButton
+                  component="a"
+                  href="https://www.linkedin.com/in/brent-brison/"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="LinkedIn"
+                  sx={{ color: theme.palette.primary.main, background: theme.palette.action.hover, '&:hover': { background: theme.palette.primary.main, color: theme.palette.background.paper } }}
+                >
+                  <LinkedInIcon fontSize="large" />
+                </IconButton>
+                <IconButton
+                  component="a"
+                  href="https://github.com/brentsWorks/"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="GitHub"
+                  sx={{ color: theme.palette.primary.main, background: theme.palette.action.hover, '&:hover': { background: theme.palette.primary.main, color: theme.palette.background.paper } }}
+                >
+                  <GitHubIcon fontSize="large" />
+                </IconButton>
+              </>
+            )}
+            {mode === 'personal' && (
+			  <>
               <IconButton
                 component="a"
-                href="/Brent_Brison_Resume.pdf"
-                download
+                href="https://www.youtube.com/@yourchannel"
+                target="_blank"
+                rel="noopener"
+                aria-label="YouTube"
                 sx={{
-                  color: '#90caf9',
-                  background: 'rgba(255,255,255,0.06)',
-                  border: '2px solid #90caf9',
-                  width: 56,
-                  height: 56,
-                  '&:hover': { background: '#90caf9', color: '#1e293b' }
+                  color: theme.palette.primary.main,
+                  background: theme.palette.action.hover,
+                  '&:hover': { background: theme.palette.primary.main, color: theme.palette.background.paper }
                 }}
-                aria-label="Download CV"
               >
-                <DownloadIcon fontSize="large" />
+                <YouTubeIcon fontSize="large" />
               </IconButton>
-            </Tooltip>
-            <Button
-              variant="outlined"
-              color="primary"
-              href="mailto:bbrison@ucsc.edu?subject=Contact&body=Hello%20Brent,%0D%0A%0D%0A"
-              sx={{ fontWeight: 600, px: 4, py: 1.5, borderRadius: 3, borderColor: '#90caf9', color: '#90caf9', background: 'rgba(144,202,249,0.08)', '&:hover': { background: '#90caf9', color: '#1e293b' } }}
-            >
-              Contact me
-            </Button>
+			  <IconButton
+			  component="a"
+			  href="https://www.instagram.com/brentbrison/"
+			  target="_blank"
+			  rel="noopener"
+			  aria-label="Instagram"
+			  sx={{ color: theme.palette.primary.main, background: theme.palette.action.hover, '&:hover': { background: theme.palette.primary.main, color: theme.palette.background.paper } }}
+			>
+			  <InstagramIcon fontSize="large" />
+			</IconButton>
+			</>
+            )}
           </Stack>
+          {mode === 'technical' && (
+            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ mb: 2, justifyContent: { xs: 'center', md: 'flex-start' }, alignItems: { xs: 'stretch', sm: 'center' } }}>
+              <Tooltip title="Download CV" placement="top">
+                <IconButton
+                  component="a"
+                  href="/images/Brent_Brison_Resume.pdf"
+                  download
+                  sx={{
+                    color: theme.palette.primary.main,
+                    background: theme.palette.action.hover,
+                    border: `2px solid ${theme.palette.primary.main}`,
+                    width: 56,
+                    height: 56,
+                    '&:hover': { background: theme.palette.primary.main, color: theme.palette.background.paper }
+                  }}
+                  aria-label="Download CV"
+                >
+                  <DownloadIcon fontSize="large" />
+                </IconButton>
+              </Tooltip>
+              <Button
+                variant="outlined"
+                color="primary"
+                href="mailto:bbrison@ucsc.edu?subject=Contact&body=Hello%20Brent,%0D%0A%0D%0A"
+                sx={{ fontWeight: 600, px: 4, py: 1.5, borderRadius: 3, borderColor: theme.palette.primary.main, color: theme.palette.primary.main, background: theme.palette.action.hover, '&:hover': { background: theme.palette.primary.main, color: theme.palette.background.paper } }}
+              >
+                Contact me
+              </Button>
+            </Stack>
+          )}
         </Box>
       </Paper>
     </Box>

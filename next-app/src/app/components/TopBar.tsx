@@ -7,8 +7,14 @@ import Button from '@mui/material/Button';
 import Link from 'next/link';
 import { Box } from '@mui/material';
 import EmojiObjectsIcon from '@mui/icons-material/EmojiObjects';
+import { useThemeMode } from '../ThemeContext';
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import { usePortfolioMode } from '../PortfolioModeContext';
 
 export default function TopBar() {
+  const { mode, setMode } = usePortfolioMode();
+
   return (
     <AppBar
       position="sticky"
@@ -22,7 +28,42 @@ export default function TopBar() {
     >
       <Toolbar sx={{ minHeight: 72, display: 'flex', justifyContent: 'space-between' }}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-          <EmojiObjectsIcon sx={{ color: '#90caf9', fontSize: 36, mr: 1 }} />
+          <Box
+            component="button"
+            aria-label="Toggle dark/light mode"
+            onClick={() => {
+              const current = localStorage.getItem('theme');
+              const next = current === 'light' ? 'dark' : 'light';
+              localStorage.setItem('theme', next);
+              // Force reload to apply theme (since theme is set in layout.tsx useEffect)
+              window.location.reload();
+            }}
+            sx={{
+              background: 'none',
+              border: 'none',
+              p: 0,
+              m: 0,
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              outline: 'none',
+              '&:hover .lightbulb': {
+                color: '#fff176',
+                filter: 'drop-shadow(0 0 8px #fff176)',
+                transition: 'color 0.2s, filter 0.2s',
+              },
+            }}
+          >
+            <EmojiObjectsIcon
+              className="lightbulb"
+              sx={{
+                color: '#90caf9',
+                fontSize: 36,
+                mr: 1,
+                transition: 'color 0.2s, filter 0.2s',
+              }}
+            />
+          </Box>
           <Typography
             variant="h5"
             sx={{
@@ -38,49 +79,17 @@ export default function TopBar() {
             Brent Brison
           </Typography>
         </Box>
-        <Box sx={{ display: 'flex', gap: 2 }}>
-          <Button
-            component={Link}
-            href="#projects"
-            sx={{
-              color: '#90caf9',
-              fontWeight: 700,
-              textTransform: 'none',
-              fontSize: 18,
-              px: 3,
-              borderRadius: 2,
-              transition: 'all 0.2s',
-              '&:hover': {
-                color: '#fff',
-                background: 'linear-gradient(90deg, #90caf9 0%, #1976d2 100%)',
-                transform: 'scale(1.08) translateY(-2px)',
-                boxShadow: '0 4px 24px 0 rgba(144,202,249,0.18)',
-              },
-            }}
+        <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
+          <ToggleButtonGroup
+            value={mode}
+            exclusive
+            onChange={(_, newMode) => { if (newMode) setMode(newMode); }}
+            sx={{ ml: 2, bgcolor: 'background.paper', borderRadius: 2 }}
+            size="small"
           >
-            Projects
-          </Button>
-          <Button
-            component={Link}
-            href="#experience"
-            sx={{
-              color: '#90caf9',
-              fontWeight: 700,
-              textTransform: 'none',
-              fontSize: 18,
-              px: 3,
-              borderRadius: 2,
-              transition: 'all 0.2s',
-              '&:hover': {
-                color: '#fff',
-                background: 'linear-gradient(90deg, #1976d2 0%, #90caf9 100%)',
-                transform: 'scale(1.08) translateY(-2px)',
-                boxShadow: '0 4px 24px 0 rgba(144,202,249,0.18)',
-              },
-            }}
-          >
-            Experience
-          </Button>
+            <ToggleButton value="technical">💼 Career</ToggleButton>
+            <ToggleButton value="personal">🏃‍♂️ Personal</ToggleButton>
+          </ToggleButtonGroup>
         </Box>
       </Toolbar>
     </AppBar>
