@@ -3,11 +3,8 @@
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import Link from 'next/link';
 import { Box } from '@mui/material';
 import EmojiObjectsIcon from '@mui/icons-material/EmojiObjects';
-import { useThemeMode } from '../ThemeContext';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { usePortfolioMode } from '../PortfolioModeContext';

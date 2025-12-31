@@ -52,10 +52,10 @@ export default function MeSection() {
         />
         <Box sx={{ width: '100%', minWidth: 0 }}>
           <Typography variant="h3" component="h1" gutterBottom sx={{ fontWeight: 700, color: theme.palette.text.primary, textShadow: '0 2px 8px rgba(0,0,0,0.4)', fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' }, textAlign: { xs: 'center', md: 'left' } }}>
-            Hi, I'm <span style={{ color: theme.palette.primary.main, textShadow: '0 2px 8px rgba(0,0,0,0.4)' }}>Brent</span>
+            Hi, I&apos;m <span style={{ color: theme.palette.primary.main, textShadow: '0 2px 8px rgba(0,0,0,0.4)' }}>Brent</span>
           </Typography>
           <Typography variant="h5" sx={{ mb: 2, fontWeight: 500, color: theme.palette.text.secondary, textShadow: '0 2px 8px rgba(0,0,0,0.4)', fontSize: { xs: '1.1rem', sm: '1.3rem', md: '1.5rem' }, textAlign: { xs: 'center', md: 'left' } }}>
-            I'm a <span style={{ color: theme.palette.primary.main, textShadow: '0 2px 8px rgba(0,0,0,0.4)' }}>
+            I&apos;m a <span style={{ color: theme.palette.primary.main, textShadow: '0 2px 8px rgba(0,0,0,0.4)' }}>
               <Typewriter
                 words={mode === 'technical' ? ['Software Engineer'] : ['Competitive Athlete']}
                 loop={0}
@@ -124,36 +124,47 @@ export default function MeSection() {
 			</>
             )}
           </Stack>
-          {mode === 'technical' && (
-            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ mb: 2, justifyContent: { xs: 'center', md: 'flex-start' }, alignItems: { xs: 'stretch', sm: 'center' } }}>
-              <Tooltip title="Download CV" placement="top">
-                <IconButton
-                  component="a"
-                  href="/images/Brent_Brison_Resume.pdf"
-                  download
-                  sx={{
-                    color: theme.palette.primary.main,
-                    background: theme.palette.action.hover,
-                    border: `2px solid ${theme.palette.primary.main}`,
-                    width: 56,
-                    height: 56,
-                    '&:hover': { background: theme.palette.primary.main, color: theme.palette.background.paper }
-                  }}
-                  aria-label="Download CV"
-                >
-                  <DownloadIcon fontSize="large" />
-                </IconButton>
-              </Tooltip>
-              <Button
-                variant="outlined"
-                color="primary"
-                href="mailto:bbrison@ucsc.edu?subject=Contact&body=Hello%20Brent,%0D%0A%0D%0A"
-                sx={{ fontWeight: 600, px: 4, py: 1.5, borderRadius: 3, borderColor: theme.palette.primary.main, color: theme.palette.primary.main, background: theme.palette.action.hover, '&:hover': { background: theme.palette.primary.main, color: theme.palette.background.paper } }}
+          <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ mb: 2, justifyContent: { xs: 'center', md: 'flex-start' }, alignItems: { xs: 'stretch', sm: 'center' }, minHeight: 56 }}>
+            <Tooltip title="Download CV" placement="top">
+              <IconButton
+                component="a"
+                href="/images/Brent_Brison_Resume.pdf"
+                download
+                sx={{
+                  color: theme.palette.primary.main,
+                  background: theme.palette.action.hover,
+                  border: `2px solid ${theme.palette.primary.main}`,
+                  width: 56,
+                  height: 56,
+                  visibility: mode === 'technical' ? 'visible' : 'hidden',
+                  pointerEvents: mode === 'technical' ? 'auto' : 'none',
+                  '&:hover': { background: theme.palette.primary.main, color: theme.palette.background.paper }
+                }}
+                aria-label="Download CV"
               >
-                Contact me
-              </Button>
-            </Stack>
-          )}
+                <DownloadIcon fontSize="large" />
+              </IconButton>
+            </Tooltip>
+            <Button
+              variant="outlined"
+              color="primary"
+              href="mailto:bbrison@ucsc.edu?subject=Contact&body=Hello%20Brent,%0D%0A%0D%0A"
+              sx={{
+                fontWeight: 600,
+                px: 4,
+                py: 1.5,
+                borderRadius: 3,
+                borderColor: theme.palette.primary.main,
+                color: theme.palette.primary.main,
+                background: theme.palette.action.hover,
+                visibility: mode === 'technical' ? 'visible' : 'hidden',
+                pointerEvents: mode === 'technical' ? 'auto' : 'none',
+                '&:hover': { background: theme.palette.primary.main, color: theme.palette.background.paper }
+              }}
+            >
+              Contact me
+            </Button>
+          </Stack>
         </Box>
       </Paper>
     </Box>

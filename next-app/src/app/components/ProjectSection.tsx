@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
-import { Box, Card, CardMedia, CardContent, Typography, Button } from '@mui/material';
+import React from 'react';
+import { Box, Card, CardMedia, CardContent, Typography } from '@mui/material';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -11,18 +11,25 @@ import { usePortfolioMode } from '../PortfolioModeContext';
 
 const technicalProjects = [
   {
-    title: 'GPA Prediction with Machine Learning',
-    date: 'February 2023',
-    image: '/images/GPAPredict.png',
+    title: 'LLM Router',
+    date: 'August 2025 - September 2025',
+    image: '/images/llm-router.png',
     description:
-      "Successfully developed a linear regression based machine learning program in Python to build and train a model that would predict a student's future GPA based on a given dataset.",
+      'Built a production system that uses a hybrid classification system to automatically selects optimal AI models for prompts, reducing token costs by 20-30%.'
   },
   {
-    title: 'Environmental Statistical Analysis and Data Collection',
-    date: 'April 2023',
-    image: '/images/RPI.jpg',
+    title: 'Aven AI Support Platform',
+    date: 'July 2025',
+    image: '/images/voice-agent.png',
     description:
-      'Developed an environmental data collection system using a DHT11 sensor and a Raspberry Pi 400B, integrating MariaDB for database management and writing a C-based program for intuitive, real-time statistical analysis of temperature and humidity.',
+      'Built a voice-based AI assistant using RAG techniques and VAPI for voice interaction, enabling real-time contextual support with 200ms average voice response time.'
+  },
+  {
+    title: 'Virtualized Campus Parking System',
+    date: 'April 2025',
+    image: '/images/parkwiselogo.png',
+    description:
+      'Collaborated in a team of 6 developers to build a digital solution for campus parking operations, replacing paper-based systems with streamlined online processes for vehicle registration, permit purchasing, and ticket management.',
   },
   {
     title: 'Tidal Disruption Analysis',
@@ -32,11 +39,18 @@ const technicalProjects = [
       "Collaborated with a team of 4 to develop a Python script for simulating and analyzing Santa Cruz tidal data, identifying discrepancies caused by the Hunga Tonga-Hunga Ha'apai volcanic eruption, and finalized a Jupyter Notebook to visualize findings, revealing a significant 2 ft deviation from regular tidal patterns due to tsunami impacts.",
   },
   {
-    title: 'Virtualized Campus Parking System',
-    date: 'April 2025',
-    image: '/images/parkwiselogo.png',
+    title: 'Environmental Statistical Analysis and Data Collection',
+    date: 'April 2023',
+    image: '/images/RPI.jpg',
     description:
-      'Collaborated in a team of 6 developers to build a digital solution for campus parking operations, replacing paper-based systems with streamlined online processes for vehicle registration, permit purchasing, and ticket management.',
+      'Developed an environmental data collection system using a DHT11 sensor and a Raspberry Pi 400B, integrating MariaDB for database management and writing a C-based program for intuitive, real-time statistical analysis of temperature and humidity.',
+  },
+  {
+    title: 'GPA Prediction with Machine Learning',
+    date: 'February 2023',
+    image: '/images/GPAPredict.png',
+    description:
+      "Successfully developed a linear regression based machine learning program in Python to build and train a model that would predict a student's future GPA based on a given dataset.",
   },
 ];
 const personalHobbies = [

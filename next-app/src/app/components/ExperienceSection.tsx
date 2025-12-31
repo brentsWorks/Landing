@@ -11,9 +11,16 @@ import { usePortfolioMode } from '../PortfolioModeContext';
 
 const technicalExperiences = [
   {
+    employer: 'Figure AI',
+    role: 'Data Quality Ops',
+    dates: 'September 2025 - Present',
+    location: 'San Jose, CA',
+    image: '/images/Figure-ai.png',
+  },
+  {
     employer: 'Headstarter AI',
     role: 'Software Engineering Fellow',
-    dates: 'June 2025 - Present',
+    dates: 'June 2025 - November 2025',
     location: 'Remote, USA',
     image: '/images/Headstarter.jpeg',
   },
